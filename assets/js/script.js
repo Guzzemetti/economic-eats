@@ -1,7 +1,13 @@
-var apiKeyyelp =
+var SearchButtonLandingPage = document.querySelector("#search-button")
+
+SearchButtonLandingPage.addEventListener("click", searchFromLandingPage)
+
+var apiKeyYelp =
 	"av6vdy6Ds6E5OJz2sxNld0D7kKiuLBWiE99xQUXUp1QZ0IYEjRvV1-6KS29udQtCCZCnn328_-vI3fLJh9pZhlaXkqBxda7y8ZvOcj75WEaM42wx9cTbNbKvv5FVYnYx";
 
-function test() {
+
+
+function searchFromLandingPage() {
 	fetch(
 		"https://floating-headland-95050.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=%22chicken%22&location=%22orlando%22",
 		{
@@ -21,6 +27,5 @@ function test() {
 		.catch((err) => {
 			console.error(err);
 		});
-}
-
-test();
+		window.location.href="results.html"
+		}
