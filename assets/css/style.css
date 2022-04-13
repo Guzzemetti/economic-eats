@@ -1,0 +1,14 @@
+body {
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+}
+
+#search-box {
+  margin-top: 300px;
+}
+.hide {
+  display: none;
+}

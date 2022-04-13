@@ -1,4 +1,5 @@
-var apiKeyyelp =
+var apiKeyyelp = 
+
 	"av6vdy6Ds6E5OJz2sxNld0D7kKiuLBWiE99xQUXUp1QZ0IYEjRvV1-6KS29udQtCCZCnn328_-vI3fLJh9pZhlaXkqBxda7y8ZvOcj75WEaM42wx9cTbNbKvv5FVYnYx";
 
 function test() {
