@@ -1,5 +1,8 @@
+.hide {
+  display: none;
+}
+
 body {
     background-image: url("/assets/images/bg_landing3.jpg")!important;
     background-size: cover;
     background-position: center;
-}
