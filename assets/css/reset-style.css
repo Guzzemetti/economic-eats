@@ -1,0 +1,13 @@
+/* sets height to match viewport and important tags are to load the background image properly */
+body {
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+  }
+
+/* Added to make the map section larger, affects all divs */
+#map {
+    height: 500px;
+}
