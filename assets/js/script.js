@@ -5,7 +5,7 @@ var searchBtn = document.getElementById("search-button");
 var zipCode = document.querySelector("#search-box")
 var originScript = "https://floating-headland-95050.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=%22$$orlando%22"
 
-
+// place holder
 
 // test() takes the value from the user
 function test() {
