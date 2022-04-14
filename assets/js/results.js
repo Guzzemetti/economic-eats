@@ -69,28 +69,24 @@ script.async = true;
 
 document.body.appendChild(script);
 
-// Google Maps API test function
-// Initialize and add the map
-
 // Initialize and add the map
 function initMap(data) {
 
   var lat = parseFloat(data.businesses[0].coordinates.latitude).toFixed(3);
   var lon = parseFloat(data.businesses[0].coordinates.longitude).toFixed(3);
-  console.log(lat);
-  console.log(lon);
 
+  // Sets the variable location to pull the lat/lon from the user's zip code from function printYelpData
   const location = new google.maps.LatLng(lat, lon)
   // The map, centered the users lat/long based on their zip code
     map = new google.maps.Map(document.getElementById("map"), {
     zoom: 14,
     center: location,
   });
-  // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
-    position: location,
-    map: map,
-  });
+  // The marker, positioned at the zip code entered// this needs to be changed to business if possible
+  // const marker = new google.maps.Marker({
+  //   position: location,
+  //   map: map,
+  // });
 }
 
 
