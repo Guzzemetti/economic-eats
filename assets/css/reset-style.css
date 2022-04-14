@@ -11,3 +11,12 @@ body {
 #map {
     height: 500px;
 }
+
+.title {
+  top: 0px;
+  margin-left: 150px;
+}
+
+nav {
+  height: 135px;
+}
