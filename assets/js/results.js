@@ -51,6 +51,7 @@ console.log(lat);
 console.log(lon);
 
 appendSearch(placeName,placeAddress,phoneNum,rating);
+initMap(data);
 }
 
 // create the append function
@@ -68,15 +69,13 @@ ul.appendChild(nameItem)
 ul.appendChild(addressItem)
 ul.appendChild(phoneItem)
 ul.appendChild(ratingItem)
-=======
-initMap(data);
 }
 
 
 
 
 // runs this function first when page is loaded
-getIndexSearch()
+getIndexSearch();
 
 
 let map;
