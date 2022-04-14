@@ -49,8 +49,28 @@ console.log(phoneNum);
 console.log(rating);
 console.log(lat);
 console.log(lon);
-
+appendSearch(placeName,placeAddress,phoneNum,rating);
 }
+
+// create the append function
+function appendSearch(placeName,placeAddress,phoneNum,rating) {
+var ul = document.getElementById('ule')
+var nameItem = document.createElement('li')
+nameItem.textContent = placeName
+var addressItem = document.createElement('li')
+addressItem.textContent = placeAddress
+var phoneItem = document.createElement('li')
+phoneItem.textContent = phoneNum
+var ratingItem = document.createElement('li')
+ratingItem.textContent = rating
+ul.appendChild(nameItem)
+ul.appendChild(addressItem)
+ul.appendChild(phoneItem)
+ul.appendChild(ratingItem)
+}
+
+
+
 
 // runs this function first when page is loaded
 getIndexSearch()
@@ -87,3 +107,4 @@ function initMap() {
     map: map,
   });
 }
+
