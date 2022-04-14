@@ -14,7 +14,7 @@ function yelpFetchTest(searchedText) {
 
 console.log(searchedText);
 
-fetch(`https://floating-headland-95050.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchedText}&price=1&location=33410&limit=10`, {
+fetch(`https://floating-headland-95050.herokuapp.com/https://api.yelp.com/v3/businesses/search?description=food&location=${searchedText}&price=1&limit=5`, {
   "method": "GET",
   "headers": {
     "Authorization": "Bearer GFh-TUiVvdi6RsShCJKhucGwyeTCt8LOC9Fw2O9CmZSziB3CeoLj5T87o6cbp5a1tyWNsltXGw9xDpMjrKzV3SM9SX5iSgDrsxUCX00B80lbUnLa1dSfUS9StKxVYnYx"
@@ -49,7 +49,7 @@ console.log(phoneNum);
 console.log(rating);
 console.log(lat);
 console.log(lon);
-
+initMap(data);
 }
 
 // runs this function first when page is loaded
@@ -64,26 +64,29 @@ console.log("connected");
 
 
 var script = document.createElement('script');
-script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
 script.async = true;
 
 document.body.appendChild(script);
 
-// Google Maps API test function
 // Initialize and add the map
+function initMap(data) {
 
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  const uluru = { lat: -25.344, lng: 131.036 };
-  // The map, centered at Uluru
+  var lat = parseFloat(data.businesses[0].coordinates.latitude).toFixed(3);
+  var lon = parseFloat(data.businesses[0].coordinates.longitude).toFixed(3);
+
+  // Sets the variable location to pull the lat/lon from the user's zip code from function printYelpData
+  const location = new google.maps.LatLng(lat, lon)
+  // The map, centered the users lat/long based on their zip code
     map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 7,
-    center: uluru,
+    zoom: 14,
+    center: location,
   });
-  // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-  });
+  // The marker, positioned at the zip code entered// this needs to be changed to business if possible
+  // const marker = new google.maps.Marker({
+  //   position: location,
+  //   map: map,
+  // });
 }
+
+
