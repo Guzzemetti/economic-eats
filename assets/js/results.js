@@ -12,63 +12,68 @@ function getIndexSearch() {
 // pushes data to a new variable to print desired data to the html results	
 function yelpFetchTest(searchedText) {
 
-console.log(searchedText);
+  console.log(searchedText);
 
-fetch(`https://floating-headland-95050.herokuapp.com/https://api.yelp.com/v3/businesses/search?description=food&location=${searchedText}&price=1&limit=5`, {
-  "method": "GET",
-  "headers": {
-    "Authorization": "Bearer GFh-TUiVvdi6RsShCJKhucGwyeTCt8LOC9Fw2O9CmZSziB3CeoLj5T87o6cbp5a1tyWNsltXGw9xDpMjrKzV3SM9SX5iSgDrsxUCX00B80lbUnLa1dSfUS9StKxVYnYx"
-  }
-})
-  .then(response => {
-    return response.json();
+  fetch(`https://floating-headland-95050.herokuapp.com/https://api.yelp.com/v3/businesses/search?description=food&location=${searchedText}&price=1&limit=5`, {
+    "method": "GET",
+    "headers": {
+      "Authorization": "Bearer GFh-TUiVvdi6RsShCJKhucGwyeTCt8LOC9Fw2O9CmZSziB3CeoLj5T87o6cbp5a1tyWNsltXGw9xDpMjrKzV3SM9SX5iSgDrsxUCX00B80lbUnLa1dSfUS9StKxVYnYx"
+    }
   })
-  .then((data) => {
-    console.log(data);
-    printYelpData(data);
-  })
-  .catch(err => {
-    console.error(err);
-  });
+    .then(response => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      printYelpData(data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }
 
 // finds aplicable data 
 // for now, just console logged to show it is working
 function printYelpData(data) {
-console.log(data);
-var placeName = data.businesses[0].name;
-var placeAddress = data.businesses[0].location.display_address;
-var phoneNum = data.businesses[0].phone;
-var rating = data.businesses[0].rating;
-var lat = data.businesses[0].coordinates.latitude;
-var lon = data.businesses[0].coordinates.longitude;
+  console.log(data);
 
-console.log(placeName);
-console.log(placeAddress);
-console.log(phoneNum);
-console.log(rating);
-console.log(lat);
-console.log(lon);
+  var yelpSearchList = data.businesses;
+  for (let i = 0; i < yelpSearchList.length; i++) {
 
-appendSearch(placeName,placeAddress,phoneNum,rating);
-initMap(data);
-}
 
-// create the append function
-function appendSearch(placeName,placeAddress,phoneNum,rating) {
-var ul = document.getElementById('ule')
-var nameItem = document.createElement('li')
-nameItem.textContent = placeName
-var addressItem = document.createElement('li')
-addressItem.textContent = placeAddress
-var phoneItem = document.createElement('li')
-phoneItem.textContent = phoneNum
-var ratingItem = document.createElement('li')
-ratingItem.textContent = rating
-ul.appendChild(nameItem)
-ul.appendChild(addressItem)
-ul.appendChild(phoneItem)
-ul.appendChild(ratingItem)
+    var placeName = data.businesses[i].name;
+    var placeAddress = data.businesses[i].location.display_address;
+    var phoneNum = data.businesses[i].phone;
+    var rating = data.businesses[i].rating;
+    var lat = data.businesses[i].coordinates.latitude;
+    var lon = data.businesses[i].coordinates.longitude;
+
+    console.log(placeName);
+    console.log(placeAddress);
+    console.log(phoneNum);
+    console.log(rating);
+    console.log(lat);
+    console.log(lon);
+
+    // // create the append function
+    // function appendSearch(placeName,placeAddress,phoneNum,rating) {
+    var ul = document.getElementById('ule')
+    var nameItem = document.createElement('li')
+    nameItem.textContent = placeName
+    var addressItem = document.createElement('li')
+    addressItem.textContent = placeAddress
+    var phoneItem = document.createElement('li')
+    phoneItem.textContent = phoneNum
+    var ratingItem = document.createElement('li')
+    ratingItem.textContent = rating
+    ul.appendChild(nameItem)
+    ul.appendChild(addressItem)
+    ul.appendChild(phoneItem)
+    ul.appendChild(ratingItem)
+
+
+    initMap(data)
+  }
 }
 
 
@@ -100,7 +105,7 @@ function initMap(data) {
   // Sets the variable location to pull the lat/lon from the user's zip code from function printYelpData
   const location = new google.maps.LatLng(lat, lon)
   // The map, centered the users lat/long based on their zip code
-    map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById("map"), {
     zoom: 14,
     center: location,
   });
