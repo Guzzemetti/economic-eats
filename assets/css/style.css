@@ -19,9 +19,11 @@ nav {
   justify-content: center;
 }
 
-#title {
+#title img {
   font-size: 35px;
   color: #B9FBC0;
+  width: 550px;
+  
 }
 
 #search-button {
