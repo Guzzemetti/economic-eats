@@ -14,6 +14,9 @@ function getIndexSearch() {
   yelpFetchTest(searchedText);
 }
 
+// runs the above function first when page is loaded
+getIndexSearch();
+
 // fetches data from yelp api for the searched term
 // pushes data to a new variable to print desired data to the html results	
 function yelpFetchTest(searchedText) {
@@ -102,57 +105,56 @@ function printYelpData(data) {
     pushSearchResults.append(phoneItem)
     pushSearchResults.append(ratingItem)
 
-
+    // Runs initMap function
     initMap(data)
   }
 }
 
-// runs this function first when page is loaded
-getIndexSearch();
+
 
 let map;
 var apiKey = "AIzaSyDREEsPaYeOmMTfyuA6WAejEQQsWEeNWSU";
 // var apiLink = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
 
-console.log("connected");
+// console.log("connected");
 
 // Appends Google Maps API script to the results.html
 var script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
 script.async = true;
-
 document.body.appendChild(script);
+
 
 // Initialize and add the map
 function initMap(data) {
 
-  // Centers the map to the region lon/lat for the first listed result
+  // Coordinates for the map to the region lon/lat for the first listed result
   var regionLat = parseFloat(data.region.center.latitude);
   var regionLon = parseFloat(data.region.center.longitude);
- 
+
+  // The map, centered the users lat/long based on their zip code
     const location = new google.maps.LatLng(regionLat, regionLon)
-    // The map, centered the users lat/long based on their zip code
+    // Displays the map on the page and sets it to the map div
     map = new google.maps.Map(document.getElementById("map"), {
     zoom: 12,
     center: location,
     }
   );
 
-
+    // Pulls from the data returned by the yelp API,
   var businessLocations = data.businesses;
   for (let i = 0; i < businessLocations.length; i++) {
-      
+      // Variables for the lat/long for the results from the Yelp api
   var lat = (data.businesses[i].coordinates.latitude);
   var lon = (data.businesses[i].coordinates.longitude);
+  // search param to place markers
   const resultMark = {lat: lat, lng: lon};
-
+    // Variables to pull the business addresses and names to be appended to the markers
   var placeAddress = data.businesses[i].location.display_address;
   var placeName = data.businesses[i].name;
   const contentString = placeName + "; " + placeAddress;
 
-
-
-
+    // Sets an info window to pop up when a marker is clicked
   const infowindow = new google.maps.InfoWindow({
     content: contentString,
   });
@@ -216,7 +218,7 @@ for (let i = 0; i < storedCities.length; i++) {
 
 
 
-
+// Function to run a search based on user input into the Results Page search box
 var searchButton = document.querySelector("#button-addon2")
 function searchHandler(event) {
 	event.preventDefault();
