@@ -2,10 +2,10 @@
 function getIndexSearch() {
   var recentSearch = []
   var searchParams = document.location.search.trim();
-  console.log(searchParams)
-  console.log(recentSearch);
+  // console.log(searchParams)
+  // console.log(recentSearch);
   var searchedText = searchParams.split('=').pop();
-  console.log(searchedText)
+  // console.log(searchedText)
   recentSearch.push(searchedText)
   var localHistory = localStorage.getItem("recentSearch")
   recentSearch.push(localHistory)
@@ -33,7 +33,7 @@ function yelpFetchTest(searchedText) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       printYelpData(data);
     })
     .catch(err => {
@@ -41,11 +41,10 @@ function yelpFetchTest(searchedText) {
     });
 }
 
-// finds aplicable data 
-// for now, just console logged to show it is working
+// finds aplicable data from Yelp
 function printYelpData(data) {
   
-  console.log(data);
+  // console.log(data);
 
   var yelpSearchList = data.businesses;
   for (let i = 0; i < yelpSearchList.length; i++) {
@@ -64,18 +63,17 @@ function printYelpData(data) {
     var addressState = data.businesses[i].location.state
     var addressZip = data.businesses[i].location.zip_code
     
-    console.log(placeName);
-    console.log(placeAddress);
-    console.log(phoneNum);
-    console.log(rating);
-    console.log(lat);
-    console.log(lon);
+    // console.log(placeName);
+    // console.log(placeAddress);
+    // console.log(phoneNum);
+    // console.log(rating);
+    // console.log(lat);
+    // console.log(lon);
     
     // create html elements and push them to the HTML
     var pushSearchResults = document.getElementById('search-pull-results')
     
-    // var chatNotification = document.createElement('div')
-    // chatNotification.className = "chat-notification"
+    // the rest of this function creates elements for business info from the Yelp ID to display on the results div
     
     var nameItem = document.createElement('h2')
     nameItem.textContent = placeName
@@ -111,19 +109,15 @@ function printYelpData(data) {
 }
 
 
-
 let map;
 var apiKey = "AIzaSyDREEsPaYeOmMTfyuA6WAejEQQsWEeNWSU";
 // var apiLink = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
-
-// console.log("connected");
 
 // Appends Google Maps API script to the results.html
 var script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
 script.async = true;
 document.body.appendChild(script);
-
 
 // Initialize and add the map
 function initMap(data) {
@@ -172,7 +166,6 @@ function initMap(data) {
   });
   }
 }
-
 
 // Toggle function for the dropdown menu
 function myFunction() {
