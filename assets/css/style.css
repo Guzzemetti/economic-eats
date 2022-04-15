@@ -12,3 +12,7 @@ body {
 .hide {
   display: none;
 }
+
+nav {
+  background-color: #212227;
+}

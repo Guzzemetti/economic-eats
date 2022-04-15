@@ -8,9 +8,9 @@ body {
   }
 
 /* Added to make the map section larger, affects all divs */
-#map {
+/* #map {
     height: 500px;
-}
+} */
 
 .title {
   top: 0px;
@@ -19,6 +19,7 @@ body {
 
 nav {
   height: 135px;
+  background-color: #212227;
 }
 
 /* Dropdown Button */
@@ -96,4 +97,13 @@ nav {
   /* color: #718096; */
   font-size: 1rem;
   line-height: 1.5;
+}
+
+#button-addon2 {
+  background-color: #F4F1BB;
+  color: #212227;
+}
+
+#pageTitle {
+  color: #B9FBC0;
 }
