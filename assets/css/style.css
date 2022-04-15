@@ -15,10 +15,19 @@ body {
 
 nav {
   background-color: #212227;
+  display: flex;
+  justify-content: center;
 }
 
 #title {
-  margin-left: 800px;
   font-size: 35px;
+  color: #B9FBC0;
+}
+
+#search-button {
+  background-color: #212227;
+}
+
+path {
   color: #B9FBC0;
 }
