@@ -1,10 +1,3 @@
-// var recentButtonOne = document.getelementbyid("recent-search-1")
-// var recentButtonTwo = document.getelementbyid("recent-search-2")
-// var recentButtonThree = document.getelementbyid("recent-search-3")
-
-
-
-
 // function that takes the search result from the index page and moves it to the fetch function
 function getIndexSearch() {
   var recentSearch = []
@@ -75,8 +68,7 @@ function printYelpData(data) {
     console.log(lat);
     console.log(lon);
     
-    // // create the append function
-    // function appendSearch(placeName,placeAddress,phoneNum,rating) {
+    // create html elements and push them to the HTML
     var pushSearchResults = document.getElementById('search-pull-results')
     
     // var chatNotification = document.createElement('div')
