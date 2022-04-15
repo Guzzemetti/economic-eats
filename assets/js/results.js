@@ -1,10 +1,23 @@
+// var recentButtonOne = document.getelementbyid("recent-search-1")
+// var recentButtonTwo = document.getelementbyid("recent-search-2")
+// var recentButtonThree = document.getelementbyid("recent-search-3")
+
+
+
+
 // function that takes the search result from the index page and moves it to the fetch function
 function getIndexSearch() {
+  var recentSearch = []
   var searchParams = document.location.search.trim();
   console.log(searchParams)
+  console.log(recentSearch);
   var searchedText = searchParams.split('=').pop();
   console.log(searchedText)
-
+  recentSearch.push(searchedText)
+  var localHistory = localStorage.getItem("recentSearch")
+  recentSearch.push(localHistory)
+  localStorage.setItem("recentSearch", recentSearch)
+  
   yelpFetchTest(searchedText);
 }
 
@@ -35,6 +48,7 @@ function yelpFetchTest(searchedText) {
 // finds aplicable data 
 // for now, just console logged to show it is working
 function printYelpData(data) {
+  
   console.log(data);
 
   var yelpSearchList = data.businesses;
@@ -121,3 +135,46 @@ function initMap(data) {
   })
   }
 }
+
+
+// Toggle function for the dropdown menu
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+
+
+searchHistory()
+
+// Users search history is stored in local storage and appended to a div within the dropdown menu"
+function searchHistory() {
+  var recentCities = localStorage.getItem("recentSearch")
+  var storedCities = (recentCities).split(",");
+	storedCities.pop()
+  console.log(storedCities);
+
+
+for (let i = 0; i < storedCities.length; i++) {
+  var dropdownAddition = document.getElementById("myDropdown")
+  var makeButton = document.createElement("button")
+  makeButton.textContent = storedCities[i]
+  dropdownAddition.appendChild(makeButton)
+
+} 
+}
+
