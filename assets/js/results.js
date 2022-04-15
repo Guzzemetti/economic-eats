@@ -59,30 +59,56 @@ function printYelpData(data) {
     var placeAddress = data.businesses[i].location.display_address;
     var phoneNum = data.businesses[i].phone;
     var rating = data.businesses[i].rating;
+    var lat = data.businesses[i].coordinates.latitude;
+    var lon = data.businesses[i].coordinates.longitude;
     
-
-    // console.log(placeName);
-    // console.log(placeAddress);
-    // console.log(phoneNum);
-    // console.log(rating);
-    // console.log(lat);
-    // console.log(lon);
-
+    var addressOne = data.businesses[i].location.address1
+    var addressTwo = data.businesses[i].location.address2
+    var addressCity = data.businesses[i].location.city
+    var addressState = data.businesses[i].location.state
+    var addressZip = data.businesses[i].location.zip_code
+    
+    console.log(placeName);
+    console.log(placeAddress);
+    console.log(phoneNum);
+    console.log(rating);
+    console.log(lat);
+    console.log(lon);
+    
     // // create the append function
     // function appendSearch(placeName,placeAddress,phoneNum,rating) {
-    var ul = document.getElementById('ule')
-    var nameItem = document.createElement('li')
+    var pushSearchResults = document.getElementById('search-pull-results')
+    
+    // var chatNotification = document.createElement('div')
+    // chatNotification.className = "chat-notification"
+    
+    var nameItem = document.createElement('h2')
     nameItem.textContent = placeName
-    var addressItem = document.createElement('li')
-    addressItem.textContent = placeAddress
-    var phoneItem = document.createElement('li')
-    phoneItem.textContent = phoneNum
-    var ratingItem = document.createElement('li')
-    ratingItem.textContent = rating
-    ul.appendChild(nameItem)
-    ul.appendChild(addressItem)
-    ul.appendChild(phoneItem)
-    ul.appendChild(ratingItem)
+    nameItem.className = "chat-notification-title mt-2"
+    
+    var addressItem = document.createElement('p')
+    addressItem.textContent = addressOne + ", " + addressTwo
+    addressCity.className = "chat-notification-message"
+    
+    var cityStZip = document.createElement('p')
+    
+    cityStZip.textContent = addressCity + ", " + addressState + " " + addressZip
+    cityStZip.className = "chat-notification-message"
+    
+    var phoneItem = document.createElement('p')
+    phoneItem.textContent = "Phone Number: " + phoneNum
+    phoneItem.className = "chat-notification-message"
+    
+    var ratingItem = document.createElement('p')
+    ratingItem.className = "mb-2"
+    ratingItem.textContent = "Rating: " + rating
+    
+    // pushSearchResults.append(chatNotification)
+    pushSearchResults.append(nameItem)
+    pushSearchResults.append(addressItem)
+    pushSearchResults.append(cityStZip)
+    pushSearchResults.append(phoneItem)
+    pushSearchResults.append(ratingItem)
 
 
     initMap(data)
