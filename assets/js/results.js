@@ -214,12 +214,15 @@ function searchHistory() {
 
 for (let i = 0; i < storedCities.length; i++) {
   var dropdownAddition = document.getElementById("myDropdown")
-  var makeButton = document.createElement("button")
+  // Adds them as A tags
+  var makeButton = document.createElement("a")
   makeButton.textContent = storedCities[i]
   dropdownAddition.appendChild(makeButton)
-
-} 
+  makeButton.href += './results.html?q=' + storedCities[i]
 }
+}
+
+
 
 
 var searchButton = document.querySelector("#button-addon2")
