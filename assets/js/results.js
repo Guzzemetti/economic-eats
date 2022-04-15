@@ -193,5 +193,6 @@ function searchHandler(event) {
 
 	location.assign(queryString);
 }
+
 // listens for button click. when clicked, function is run
 searchButton.addEventListener('click', searchHandler);
