@@ -154,11 +154,28 @@ function initMap(data) {
   var lon = (data.businesses[i].coordinates.longitude);
   const resultMark = {lat: lat, lng: lon};
 
+  var placeAddress = data.businesses[i].location.display_address;
+  var placeName = data.businesses[i].name;
+  const contentString = placeName + "; " + placeAddress;
+
+
+
+
+  const infowindow = new google.maps.InfoWindow({
+    content: contentString,
+  });
   // The marker, positioned at the zip code entered
   const marker = new google.maps.Marker({
     position: resultMark,
     map: map,
   })
+  marker.addListener("click", () => {
+    infowindow.open({
+      anchor: marker,
+      map,
+      shouldFocus: false,
+    });
+  });
   }
 }
 
