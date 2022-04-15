@@ -109,8 +109,8 @@ document.body.appendChild(script);
 function initMap(data) {
 
   // Centers the map to the region lon/lat for the first listed result
-  var regionLat = parseFloat(data.region.center.latitude).toFixed(3);
-  var regionLon = parseFloat(data.region.center.longitude).toFixed(3);
+  var regionLat = parseFloat(data.region.center.latitude);
+  var regionLon = parseFloat(data.region.center.longitude);
  
     const location = new google.maps.LatLng(regionLat, regionLon)
     // The map, centered the users lat/long based on their zip code
@@ -178,3 +178,22 @@ for (let i = 0; i < storedCities.length; i++) {
 } 
 }
 
+
+var searchButton = document.querySelector("#button-addon2")
+function searchHandler(event) {
+	event.preventDefault();
+
+	var searchText = document.querySelector("#searchBar").value;
+
+	if (!searchText) {
+		return;
+	}
+
+	var queryString = './results.html?q=' + searchText;
+
+	location.assign(queryString);
+}
+
+
+// listens for button click. when clicked, function is run
+searchButton.addEventListener('click', searchHandler);
