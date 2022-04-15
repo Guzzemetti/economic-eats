@@ -15,8 +15,10 @@ body {
 
 nav {
   background-color: #212227;
+}
 
 #title {
   margin-left: 800px;
   font-size: 35px;
+  color: #B9FBC0;
 }
