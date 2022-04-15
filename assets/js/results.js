@@ -45,8 +45,7 @@ function printYelpData(data) {
     var placeAddress = data.businesses[i].location.display_address;
     var phoneNum = data.businesses[i].phone;
     var rating = data.businesses[i].rating;
-    var lat = data.businesses[i].coordinates.latitude;
-    var lon = data.businesses[i].coordinates.longitude;
+    
 
     // console.log(placeName);
     // console.log(placeAddress);
@@ -98,19 +97,27 @@ function initMap(data) {
   // Centers the map to the region lon/lat for the first listed result
   var regionLat = parseFloat(data.region.center.latitude).toFixed(3);
   var regionLon = parseFloat(data.region.center.longitude).toFixed(3);
-
  
-  const location = new google.maps.LatLng(regionLat, regionLon)
+    const location = new google.maps.LatLng(regionLat, regionLon)
     // The map, centered the users lat/long based on their zip code
     map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 14,
+    zoom: 12,
     center: location,
     }
   );
 
+
+  var businessLocations = data.businesses;
+  for (let i = 0; i < businessLocations.length; i++) {
+      
+  var lat = (data.businesses[i].coordinates.latitude);
+  var lon = (data.businesses[i].coordinates.longitude);
+  const resultMark = {lat: lat, lng: lon};
+
   // The marker, positioned at the zip code entered
   const marker = new google.maps.Marker({
-    position: location,
+    position: resultMark,
     map: map,
-  });
+  })
+  }
 }
