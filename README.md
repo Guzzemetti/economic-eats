@@ -1,6 +1,8 @@
 # Economic Eats
 # project-1 for UCF
 
+![landing page](https://user-images.githubusercontent.com/99369137/163577743-4a735fde-5b2c-4311-bde2-5be432e952c9.png)
+
 # Maintained By:
 Austin Donovan
 
