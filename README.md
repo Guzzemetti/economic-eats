@@ -45,7 +45,7 @@ Github: https://github.com/jahnathanexantus
 ## Project Location:
 [Github Repository](https://github.com/Guzzemetti/ucf-project-1)
 
-[Github Live Link](https://guzzemetti.github.io/ucf-project-1/)
+[Github Live Link](https://guzzemetti.github.io/economic-eats/)
 
 ## Project Example:
 ![landing page](https://user-images.githubusercontent.com/99369137/163577743-4a735fde-5b2c-4311-bde2-5be432e952c9.png)
